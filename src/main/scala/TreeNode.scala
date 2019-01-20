@@ -13,9 +13,11 @@ case class TreeNode(nodes: Queue[TreeNode] = Queue.empty,
 
 
   /**
-    * Sorts leaf nodes in a tree and deletes extra leaf nodes from each node.
+    * Sorts leaf nodes in a tree and moves extra leaf nodes from each node to the next node.
     *
-    * Definition of extra leaf nodes:
+    * If extra leaf nodes are present in the last node, they are deleted.
+    *
+    * Definition of the extra leaf nodes:
     *
     * If we start iterating over the leaf nodes of a some particular node and count sum of their values,
     * extra leaf nodes will be a right part of a leaf nodes starting from a node when the sum begins being more than
@@ -30,7 +32,9 @@ case class TreeNode(nodes: Queue[TreeNode] = Queue.empty,
   }
 
   /**
-    * Sorts leaf nodes in a tree and deletes extra leaf nodes from each node.
+    * Sorts leaf nodes in a tree and moves extra leaf nodes from each node to the next node.
+    *
+    * If extra leaf nodes are present in the last node, they are deleted.
     *
     * Definition of extra leaf nodes:
     *
