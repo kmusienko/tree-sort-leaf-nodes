@@ -24,6 +24,11 @@ case class SinglyLinkedList() {
     override def toString: String = value.toString + next.fold("")("," + _.toString)
   }
 
+  /**
+    * Constructor that allows for passing elements to add to the SinglyLinkedList.
+    *
+    * @param elems elements to be added to SinglyLinkedList
+    */
   def this(elems: Int*) = {
     this()
     addAll(elems.reverse)
