@@ -11,7 +11,7 @@ case class TreeNode(nodes: Queue[TreeNode] = Queue.empty,
     sortLeafNodes(iterator, w)
   }
 
-  private def sortLeafNodes(iterator: Iterator[TreeNode], w: Int): Unit = {
+  def sortLeafNodes(iterator: Iterator[TreeNode], w: Int): Unit = {
     if (leafList.isEmpty) {
       if (iterator.hasNext) {
         val next = iterator.next
