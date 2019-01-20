@@ -26,11 +26,11 @@ case class SinglyLinkedList() {
 
   def this(elems: Int*) = {
     this()
-    addAll(elems)
+    addAll(elems.reverse)
   }
 
   /**
-    * Adds a sequence of int elements to the singly linked list.
+    * Adds a sequence of int elements to the singly linked list at the beginning.
     *
     * @param elems elements to be added
     */
