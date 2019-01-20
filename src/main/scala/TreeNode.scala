@@ -5,6 +5,12 @@ import scala.collection.immutable.Queue
 case class TreeNode(nodes: Queue[TreeNode] = Queue.empty,
                     leafList: SinglyLinkedList = SinglyLinkedList.empty) {
 
+
+  def sortLeafNodes(traversalType: TraversalType, w: Int): Unit = {
+    val iterator: Iterator[TreeNode] = traversalType.iterator[TreeNode](this, _.nodes)
+    sortLeafNodes(iterator, w)
+  }
+
   private def sortLeafNodes(iterator: Iterator[TreeNode], w: Int): Unit = {
     if (leafList.isEmpty) {
       if (iterator.hasNext) {
