@@ -63,6 +63,63 @@ case class SinglyLinkedList() {
     }
   }
 
+  def sort(): Unit = {
+    head = mergeSort(head)
+  }
+
+  def mergeSort(maybeNode: Option[Node]): Option[Node] = {
+    maybeNode.flatMap {
+      node =>
+        node.next match {
+          case Some(_) =>
+            val maybeMiddle: Option[Node] = getMiddle(node)
+            val maybeNextOfMiddle: Option[Node] = maybeMiddle.flatMap(_.next)
+
+            maybeMiddle.foreach(_.next = None)
+
+            val maybeLeft = mergeSort(maybeNode)
+            val maybeRight = mergeSort(maybeNextOfMiddle)
+
+            val sortedList: Option[Node] = sortedMerge(maybeLeft, maybeRight)
+            sortedList
+          case _ => Option(node)
+        }
+    }
+  }
+
+  def sortedMerge(maybeNodeA: Option[Node], maybeNodeB: Option[Node]): Option[Node] = {
+    var result: Option[Node] = None
+    (maybeNodeA, maybeNodeB) match {
+      case (None, None) => None
+      case (Some(nodeA), None) => Some(nodeA)
+      case (None, Some(nodeB)) => Some(nodeB)
+      case (Some(nodeA), Some(nodeB)) =>
+        if (nodeA.value <= nodeB.value) {
+          result = Some(nodeA)
+          result.get.next = sortedMerge(nodeA.next, Some(nodeB))
+        } else {
+          result = Some(nodeB)
+          result.get.next = sortedMerge(Some(nodeA), nodeB.next)
+        }
+        result
+    }
+  }
+
+  def getMiddle(node: Node): Option[Node] = {
+    var fastPointer: Option[Node] = node.next
+    var slowPointer: Option[Node] = Option(node)
+
+    while (fastPointer.isDefined) {
+      fastPointer = fastPointer.get.next
+      fastPointer.foreach {
+        fastPointerValue =>
+          slowPointer = slowPointer.get.next
+          fastPointer = fastPointerValue.next
+      }
+    }
+    slowPointer
+  }
+
   def print(): Unit = head.foreach(_.print())
 
   override def toString: String = head.fold("Empty")(_.toString)
