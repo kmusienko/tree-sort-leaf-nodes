@@ -178,6 +178,11 @@ case class SinglyLinkedList() {
 
   override def toString: String = head.fold("LinkedList()")("LinkedList(" + _.toString + ")")
 
+  /**
+    * Checks whether this list empty or not
+    *
+    * @return true if the list is empty, false otherwise
+    */
   def isEmpty: Boolean = size == 0
 }
 
