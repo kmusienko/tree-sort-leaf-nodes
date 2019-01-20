@@ -27,6 +27,35 @@ case class SinglyLinkedList() {
     size += elems.size
   }
 
+  //TODO: rework the code
+  def removeAfterSumMoreThanW(w: Int): List[Int] = {
+    head match {
+      case Some(node) =>
+        var current = node
+        var sum = node.value
+        if (sum > w) {
+          val listValuesToReturn = toScalaList()
+          head = None
+          size -= listValuesToReturn.size
+          return listValuesToReturn
+        }
+
+        while (current.next.nonEmpty) {
+          sum += current.next.get.value
+          if (sum > w) {
+            val listValuesToReturn = toScalaList(fromNode = current.next)
+            current.next = None
+            size -= listValuesToReturn.size
+            return listValuesToReturn
+          }
+          current = current.next.get
+        }
+        List.empty
+
+      case None => List.empty
+    }
+  }
+
   def toScalaList(fromNode: Option[Node] = head): List[Int] = {
     fromNode match {
       case Some(node) => List(node.value) ++ toScalaList(node.next)
