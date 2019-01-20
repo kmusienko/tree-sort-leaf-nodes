@@ -20,12 +20,8 @@ case class SinglyLinkedList() {
     * @param next  link to the next node
     */
   case class Node(var value: Int, var next: Option[Node] = None) {
-    def print(): Unit = {
-      println(value)
-      next.foreach(_.print())
-    }
 
-    override def toString: String = String.valueOf(value) + next.fold("")(_.toString)
+    override def toString: String = value.toString + next.fold("")("," + _.toString)
   }
 
   def this(elems: Int*) = {
@@ -180,9 +176,7 @@ case class SinglyLinkedList() {
     slowPointer
   }
 
-  def print(): Unit = head.foreach(_.print())
-
-  override def toString: String = head.fold("Empty")(_.toString)
+  override def toString: String = head.fold("LinkedList()")("LinkedList(" + _.toString + ")")
 
   def isEmpty: Boolean = size == 0
 }
