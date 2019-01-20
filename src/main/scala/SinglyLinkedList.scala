@@ -27,6 +27,13 @@ case class SinglyLinkedList() {
     size += elems.size
   }
 
+  def toScalaList(fromNode: Option[Node] = head): List[Int] = {
+    fromNode match {
+      case Some(node) => List(node.value) ++ toScalaList(node.next)
+      case _ => List.empty
+    }
+  }
+
   def print(): Unit = head.foreach(_.print())
 
   override def toString: String = head.fold("Empty")(_.toString)
