@@ -26,7 +26,7 @@ object TreeTraversalTypes {
     */
   case object BreadthFirst extends TraversalType {
 
-    /** @inheritdoc*/
+    /** @inheritdoc */
     override def iterator[Node](node: Node, f: Node => Queue[Node]): Iterator[Node] = {
       def recurse(q: Queue[Node]): List[Node] = {
         if (q.isEmpty) List.empty
