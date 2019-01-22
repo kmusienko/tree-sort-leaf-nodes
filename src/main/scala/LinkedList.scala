@@ -80,16 +80,13 @@ sealed trait LinkedList {
       merge(left.mergeSort, right.mergeSort)
     }
   }
-  def fdsaf(n: Int, w: Int): LinkedList = {
-    if (sumBefore(n) > w) NilCons else Cons(this.value, this.next.fdsaf(n + 1, w))
-  }
 
+  def getAllAfterSumMoreThanW(w: Int): LinkedList = {
+    def recurse(n: Int, w: Int): LinkedList = {
+      if (sumBefore(n) > w) getAfter(n - 1) else recurse(n + 1, w)
+    }
 
-  def removeAllAfterSumMoreThanW(w: Int): LinkedList = {
-
-
-
-    fdsaf(1, w)
+    recurse(1, w)
   }
 }
 
@@ -140,7 +137,7 @@ object ConsTutorialDriver extends App {
   println("sorted: " + llSorted)
   println("old: " + ll)
   println("sum in sorted before n=2: " + llSorted.sumBefore(2))
-  println("removed all after sum more than 3: " + llSorted.removeAllAfterSumMoreThanW(3))
+  println("removed all after sum more than 6: " + llSorted.getAllAfterSumMoreThanW(6))
 
   val c1 = Cons(1, NilCons)
   val c2 = Cons(2, c1)
