@@ -1,3 +1,5 @@
+package mutable
+
 /**
   * Implementation of a singly linked list of integers.
   */
@@ -25,9 +27,9 @@ case class SinglyLinkedList() {
   }
 
   /**
-    * Constructor that allows for passing elements to add to the SinglyLinkedList.
+    * Constructor that allows for passing elements to add to the mutable.SinglyLinkedList.
     *
-    * @param elems elements to be added to SinglyLinkedList
+    * @param elems elements to be added to mutable.SinglyLinkedList
     */
   def this(elems: Int*) = {
     this()
@@ -91,7 +93,7 @@ case class SinglyLinkedList() {
   }
 
   /**
-    * Creates a Scala List with the values from this SinglyLinkedList with the same order.
+    * Creates a Scala List with the values from this mutable.SinglyLinkedList with the same order.
     *
     * @param fromNode node from which to start copying values
     * @return new scala list with copied values
@@ -104,7 +106,7 @@ case class SinglyLinkedList() {
   }
 
   /**
-    * Sorts the SinglyLinkedList in ascending order.
+    * Sorts the mutable.SinglyLinkedList in ascending order.
     * Actually, it just calls 'mergeSort' method and overrides the head node.
     */
   def sort(): Unit = {
@@ -161,7 +163,7 @@ case class SinglyLinkedList() {
   }
 
   /**
-    * Finds the middle of the SinglyLinkedList.
+    * Finds the middle of the mutable.SinglyLinkedList.
     *
     * @param node head of the linked list
     * @return middle node

@@ -1,4 +1,6 @@
-import TreeTraversalTypes.TraversalType
+package mutable
+
+import mutable.TreeTraversalTypes.TraversalType
 
 import scala.collection.immutable.Queue
 

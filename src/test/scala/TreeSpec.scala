@@ -1,4 +1,5 @@
-import TreeTraversalTypes.BreadthFirst
+import mutable.TreeTraversalTypes.BreadthFirst
+import mutable.{SinglyLinkedList, TreeNode}
 import org.scalatest.{BeforeAndAfter, MustMatchers, WordSpec}
 
 import scala.collection.immutable.Queue

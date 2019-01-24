@@ -1,3 +1,5 @@
+package mutable
+
 import scala.collection.immutable.Queue
 
 /**
